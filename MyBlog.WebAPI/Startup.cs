@@ -6,6 +6,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using MyBlog.IRepository;
+using MyBlog.IService;
+using MyBlog.Repository;
+using MyBlog.Service;
 using SqlSugar.IOC;
 using System;
 using System.Collections.Generic;
@@ -42,6 +46,10 @@ namespace MyBlog.WebAPI
                 
             });
             #endregion
+
+            #region IOC“¿¿µ◊¢»Î
+
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,6 +70,15 @@ namespace MyBlog.WebAPI
             {
                 endpoints.MapControllers();
             });
+        }
+    }
+    static class IOCExtend
+    {
+        static IServiceCollection AddCustomIOC(this IServiceCollection services)
+        {
+            services.AddScoped<IBlogNewsRepository,BlogNewsRepository>();
+            services.AddScoped<IBlogNewsService,BlogNewsService>();
+            services.AddScoped<IBlogNewsRepository,BlogNewsRepository>();
         }
     }
 }
