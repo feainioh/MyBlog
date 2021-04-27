@@ -9,9 +9,11 @@ namespace MyBlog.Service
 {
     public class BlogNewsService:BaseService<BlogNews>,IBlogNewsService
     {
+        private readonly IBlogNewsRepository _iBlogNewsRepository;
         public BlogNewsService(IBlogNewsRepository blogNewsRepository)
         {
             base._iBaseRepository = blogNewsRepository;
+            _iBlogNewsRepository = blogNewsRepository;
         }
     }
 }

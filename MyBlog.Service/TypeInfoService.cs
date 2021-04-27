@@ -9,9 +9,11 @@ namespace MyBlog.Service
 {
     public class TypeInfoService:BaseService<TypeInfo>,ITypeInfoService
     {
-        public TypeInfoService(ITypeInfoRepository blogNewsRepository)
+        private readonly ITypeInfoRepository _iTypeInfoRepository;
+        public TypeInfoService(ITypeInfoRepository typeInfoRepository)
         {
-            base._iBaseRepository = blogNewsRepository;
+            base._iBaseRepository = typeInfoRepository;
+            _iTypeInfoRepository = typeInfoRepository;
         }
     }
 }

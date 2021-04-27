@@ -48,7 +48,7 @@ namespace MyBlog.WebAPI
             #endregion
 
             #region IOC“¿¿µ◊¢»Î
-
+            services.AddCustomIOC();
             #endregion
         }
 
@@ -74,11 +74,15 @@ namespace MyBlog.WebAPI
     }
     static class IOCExtend
     {
-        static IServiceCollection AddCustomIOC(this IServiceCollection services)
+       public static IServiceCollection AddCustomIOC(this IServiceCollection services)
         {
             services.AddScoped<IBlogNewsRepository,BlogNewsRepository>();
             services.AddScoped<IBlogNewsService,BlogNewsService>();
-            services.AddScoped<IBlogNewsRepository,BlogNewsRepository>();
+            services.AddScoped<ITypeInfoRepository, TypeInfoRepository>();
+            services.AddScoped<ITypeInfoService, TypeInfoService>();
+            services.AddScoped<IWriterInfoRepository, WriterInfoRepository>();
+            services.AddScoped<IWriterInfoService, WriterInfoService>();
+            return services;
         }
     }
 }
